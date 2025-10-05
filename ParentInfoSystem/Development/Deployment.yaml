@@ -2,10 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: django-dev
+  namespace: vbs-dev
   labels:
     app: django-dev
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: django-dev
@@ -15,7 +16,16 @@ spec:
         app: django-dev
     spec:
       containers:
-      - name: django-dev
-        image: django-dev
+      - name: django
+        image: ghcr.io/ruchany13/dev:0.1
+        envFrom:
+          - secretRef:
+              name: vbs-dev-r2
+          - secretRef:
+              name: vbs-dev-django
+          - secretRef:
+              name: vbs-dev-postgres
+      imagePullSecrets:
+        - name: registry-credentials
         ports:
         - containerPort: 8000
