@@ -25,7 +25,7 @@ spec:
               name: vbs-dev-django
           - secretRef:
               name: vbs-dev-postgres
-      imagePullSecrets:
-        - name: registry-credentials
         ports:
         - containerPort: 8000
+      imagePullSecrets:
+        - name: registry-credentials
