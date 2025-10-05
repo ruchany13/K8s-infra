@@ -2,6 +2,8 @@ apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
   name: cluster-dev
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   description: "CNPG Cluster for Development Enviroment"
   imageName: ghcr.io/cloudnative-pg/postgresql:17.5
