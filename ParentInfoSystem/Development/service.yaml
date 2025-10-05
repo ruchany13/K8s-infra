@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: django-dev
+  name: django-dev-service
+  namespace: vbs-dev
+spec:
+  ports:
+  - name: HTTP
+    port: 8000
+    protocol: TCP
+    targetPort: 8000
+  selector:
+    app: django-dev
+  type: ClusterIP
