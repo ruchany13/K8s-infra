@@ -18,6 +18,7 @@ spec:
       containers:
       - name: django
         image: ghcr.io/ruchany13/dev:0.1
+        imagePullPolicy: Always
         envFrom:
           - secretRef:
               name: vbs-dev-r2
@@ -29,3 +30,4 @@ spec:
         - containerPort: 8000
       imagePullSecrets:
         - name: registry-credentials
+
